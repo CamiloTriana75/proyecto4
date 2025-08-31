@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { ShoppingCart, TrendingUp, Shield, Users, Gamepad2, Coins, Zap, Crown, Star, Trophy, CreditCard, GraduationCap } from 'lucide-react';
-import { Service } from '../types';
+import { ShoppingCart, Crown, Coins, Clock, Gift, Percent, CreditCard, Shield, Trophy, Users, Zap, Gamepad2, GraduationCap, TrendingUp } from 'lucide-react';
+import { Service, PricingTier } from '../types';
+import { calculateDynamicPrice, getCurrentPricePerUnit, getDiscountPercentage, getNextDiscountTier } from '../utils/pricing';
 
 interface ServiceCardProps {
   service: Service;
@@ -88,6 +89,9 @@ const getGlowColor = (subcategory: string, isGameService: boolean) => {
 
 export const ServiceCard: React.FC<ServiceCardProps> = ({ service, onSelect }) => {
   const [quantity, setQuantity] = useState(service.minQuantity || 100);
+  const [selectedTier, setSelectedTier] = useState<PricingTier | null>(
+    service.pricingTiers ? service.pricingTiers[0] : null
+  );
   const [quantityError, setQuantityError] = useState('');
 
   const isGameService = service.category === 'games';
@@ -103,8 +107,11 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service, onSelect }) =
   };
 
   const calculateTotal = () => {
+    if (service.type === 'tiers' || service.type === 'subscription') {
+      return selectedTier ? selectedTier.price : service.unit_price;
+    }
     if (service.type === 'cantidad' && quantity) {
-      return Math.round(service.unit_price * quantity);
+      return calculateDynamicPrice(service, quantity);
     }
     return service.unit_price;
   };
@@ -131,6 +138,8 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service, onSelect }) =
     if (service.type === 'cantidad') {
       if (!validateQuantity(quantity)) return;
       onSelect(service, quantity);
+    } else if (service.type === 'tiers' || service.type === 'subscription') {
+      onSelect(service, selectedTier?.value);
     } else {
       onSelect(service);
     }
@@ -229,14 +238,90 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service, onSelect }) =
                   )}
                 </div>
                 
+                {/* Dynamic pricing info */}
+                {getDiscountPercentage(service, quantity) > 0 && (
+                  <div className="glass-effect rounded-lg p-3 border border-green-500/20 bg-green-500/5">
+                    <div className="flex items-center justify-center space-x-2 text-green-400">
+                      <Percent className="w-4 h-4" />
+                      <span className="text-sm font-semibold">
+                        ¡{getDiscountPercentage(service, quantity)}% de descuento aplicado!
+                      </span>
+                    </div>
+                  </div>
+                )}
+                
                 <div className={`text-center p-6 bg-gradient-to-r ${gradientColor}/10 rounded-2xl border border-white/10 backdrop-blur-sm`}>
                   <div className="space-y-2">
                     <span className={`text-3xl font-black bg-gradient-to-r ${gradientColor.replace('from-', 'from-').replace('to-', 'to-')} bg-clip-text text-transparent`}>
                       {formatPrice(calculateTotal())}
                     </span>
                     <p className="text-gray-300 text-sm font-medium">
-                      {formatPrice(service.unit_price)} por unidad
+                      {formatPrice(getCurrentPricePerUnit(service, quantity))} por unidad
                     </p>
+                    {getNextDiscountTier(service, quantity) && (
+                      <p className="text-orange-400 text-xs font-medium">
+                        Compra {getNextDiscountTier(service, quantity)!.quantity.toLocaleString()} para {getNextDiscountTier(service, quantity)!.discount}% descuento
+                      </p>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ) : service.type === 'tiers' || service.type === 'subscription' ? (
+              <div className="space-y-4">
+                <div className="glass-effect rounded-xl p-4 border border-white/10 backdrop-blur-md">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-gray-200 font-semibold flex items-center space-x-2">
+                      {service.type === 'subscription' ? (
+                        <>
+                          <Clock className="w-4 h-4 text-orange-500" />
+                          <span>Duración:</span>
+                        </>
+                      ) : (
+                        <>
+                          <Gift className="w-4 h-4 text-orange-500" />
+                          <span>Valor:</span>
+                        </>
+                      )}
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                    {service.pricingTiers?.map((tier, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setSelectedTier(tier)}
+                        className={`p-3 rounded-lg border transition-all duration-300 text-sm font-semibold ${
+                          selectedTier?.value === tier.value
+                            ? `border-orange-500 bg-gradient-to-r ${gradientColor}/20 text-white`
+                            : 'border-white/20 glass-effect text-gray-300 hover:border-orange-500/50'
+                        }`}
+                      >
+                        <div className="text-center">
+                          <div className="font-bold text-xs sm:text-sm">{tier.label}</div>
+                          <div className="text-xs text-gray-400 mt-1">
+                            {formatPrice(tier.price)}
+                          </div>
+                          {tier.discount && (
+                            <div className="text-xs text-green-400 mt-1">
+                              -{tier.discount}%
+                            </div>
+                          )}
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className={`text-center p-6 bg-gradient-to-r ${gradientColor}/10 rounded-2xl border border-white/10 backdrop-blur-sm`}>
+                  <div className="space-y-2">
+                    <span className={`text-3xl font-black bg-gradient-to-r ${gradientColor.replace('from-', 'from-').replace('to-', 'to-')} bg-clip-text text-transparent`}>
+                      {formatPrice(calculateTotal())}
+                    </span>
+                    {selectedTier?.discount && (
+                      <p className="text-green-400 text-sm font-medium flex items-center justify-center space-x-1">
+                        <Percent className="w-4 h-4" />
+                        <span>{selectedTier.discount}% descuento</span>
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>

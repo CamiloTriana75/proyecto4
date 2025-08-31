@@ -10,10 +10,17 @@ export const SERVICES: Service[] = [
     note: "Moneda oficial para comprar skins, accesorios y más",
     category: "games",
     subcategory: "currency",
-    image: "https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/robux.webp",
     maxQuantity: 50000,
     minQuantity: 100,
-    emoji: "🎮"
+    emoji: "🎮",
+    quantityBreaks: [
+      { quantity: 100, pricePerUnit: 9.5 },
+      { quantity: 500, pricePerUnit: 9.0, discount: 5 },
+      { quantity: 1000, pricePerUnit: 8.5, discount: 11 },
+      { quantity: 5000, pricePerUnit: 8.0, discount: 16 },
+      { quantity: 10000, pricePerUnit: 7.5, discount: 21 }
+    ]
   },
   {
     id: "G002",
@@ -23,10 +30,17 @@ export const SERVICES: Service[] = [
     note: "Para skins, personajes y eventos especiales",
     category: "games",
     subcategory: "currency",
-    image: "https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/Diamantes-Free-Fire-Brasil.jpg",
     maxQuantity: 10000,
     minQuantity: 50,
-    emoji: "💎"
+    emoji: "💎",
+    quantityBreaks: [
+      { quantity: 50, pricePerUnit: 9.5 },
+      { quantity: 200, pricePerUnit: 9.0, discount: 5 },
+      { quantity: 500, pricePerUnit: 8.5, discount: 11 },
+      { quantity: 1000, pricePerUnit: 8.0, discount: 16 },
+      { quantity: 5000, pricePerUnit: 7.5, discount: 21 }
+    ]
   },
   {
     id: "G003",
@@ -36,10 +50,17 @@ export const SERVICES: Service[] = [
     note: "Para skins, emotes y pase de batalla",
     category: "games",
     subcategory: "currency",
-    image: "https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/fortnite.jpg",
     maxQuantity: 25000,
     minQuantity: 100,
-    emoji: "🏆"
+    emoji: "🏆",
+    quantityBreaks: [
+      { quantity: 100, pricePerUnit: 12 },
+      { quantity: 500, pricePerUnit: 11.5, discount: 4 },
+      { quantity: 1000, pricePerUnit: 11.0, discount: 8 },
+      { quantity: 5000, pricePerUnit: 10.5, discount: 13 },
+      { quantity: 10000, pricePerUnit: 10.0, discount: 17 }
+    ]
   },
   {
     id: "G004",
@@ -49,7 +70,7 @@ export const SERVICES: Service[] = [
     note: "Para skins, armas y pases de temporada",
     category: "games",
     subcategory: "currency",
-    image: "https://images.pexels.com/photos/275033/pexels-photo-275033.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/pubg.webp",
     maxQuantity: 15000,
     minQuantity: 60,
     emoji: "🔫"
@@ -62,7 +83,7 @@ export const SERVICES: Service[] = [
     note: "Para héroes, skins y cofres",
     category: "games",
     subcategory: "currency",
-    image: "https://images.pexels.com/photos/194511/pexels-photo-194511.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/mobile legends.jpg",
     maxQuantity: 12000,
     minQuantity: 50,
     emoji: "⚔️"
@@ -75,7 +96,7 @@ export const SERVICES: Service[] = [
     note: "Para acelerar construcciones y comprar recursos",
     category: "games",
     subcategory: "currency",
-    image: "https://images.pexels.com/photos/1293269/pexels-photo-1293269.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/clash-of-clans-gemas.webp",
     maxQuantity: 5000,
     minQuantity: 50,
     emoji: "💰"
@@ -88,7 +109,7 @@ export const SERVICES: Service[] = [
     note: "Para acelerar cofres, comprar cartas o skins",
     category: "games",
     subcategory: "currency",
-    image: "https://images.pexels.com/photos/1040157/pexels-photo-1040157.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/clash royale.webp",
     maxQuantity: 8000,
     minQuantity: 50,
     emoji: "👑"
@@ -101,7 +122,7 @@ export const SERVICES: Service[] = [
     note: "Para invocaciones y eventos",
     category: "games",
     subcategory: "currency",
-    image: "https://images.pexels.com/photos/1174732/pexels-photo-1174732.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/genshin.webp",
     maxQuantity: 8000,
     minQuantity: 60,
     emoji: "🌟"
@@ -114,7 +135,7 @@ export const SERVICES: Service[] = [
     note: "Para armas, skins y pases de batalla",
     category: "games",
     subcategory: "currency",
-    image: "https://images.pexels.com/photos/3945313/pexels-photo-3945313.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/cod mobile.jpg",
     maxQuantity: 10000,
     minQuantity: 100,
     emoji: "🎯"
@@ -127,7 +148,7 @@ export const SERVICES: Service[] = [
     note: "Para mejorar jugadores, equipos y habilidades",
     category: "games",
     subcategory: "currency",
-    image: "https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/dls.jpg",
     maxQuantity: 20000,
     minQuantity: 100,
     emoji: "⚽"
@@ -140,7 +161,7 @@ export const SERVICES: Service[] = [
     note: "Para comprar skins de armas y pases de batalla",
     category: "games",
     subcategory: "currency",
-    image: "https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/valorant.jpg",
     maxQuantity: 15000,
     minQuantity: 100,
     emoji: "🎯"
@@ -153,7 +174,7 @@ export const SERVICES: Service[] = [
     note: "Para skins, campeones y pases de evento",
     category: "games",
     subcategory: "currency",
-    image: "https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/rp lol.png",
     maxQuantity: 20000,
     minQuantity: 100,
     emoji: "🏆"
@@ -166,7 +187,7 @@ export const SERVICES: Service[] = [
     note: "Para comprar skins y packs dentro del juego",
     category: "games",
     subcategory: "currency",
-    image: "https://images.pexels.com/photos/1293269/pexels-photo-1293269.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/minecraft.jpg",
     maxQuantity: 10000,
     minQuantity: 100,
     emoji: "⛏️"
@@ -179,7 +200,7 @@ export const SERVICES: Service[] = [
     note: "Para sobres, jugadores y modos de juego",
     category: "games",
     subcategory: "currency",
-    image: "https://images.pexels.com/photos/274422/pexels-photo-274422.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/fifa.jpg",
     maxQuantity: 12000,
     minQuantity: 100,
     emoji: "⚽"
@@ -190,56 +211,86 @@ export const SERVICES: Service[] = [
     id: "G015",
     name: "Steam Wallet",
     unit_price: 1000,
-    type: "fijo",
-    note: "Créditos para juegos y contenido en Steam - $1000 ARS",
+    type: "tiers",
+    note: "Créditos para juegos y contenido en Steam",
     category: "games",
     subcategory: "giftcard",
-    image: "https://images.pexels.com/photos/1174732/pexels-photo-1174732.jpeg?auto=compress&cs=tinysrgb&w=400",
-    emoji: "🎮"
+    image: "/src/img/games/steam.png",
+    emoji: "🎮",
+    pricingTiers: [
+      { value: 500, price: 500, label: "$500 ARS" },
+      { value: 1000, price: 1000, label: "$1000 ARS" },
+      { value: 2000, price: 2000, label: "$2000 ARS" },
+      { value: 5000, price: 5000, label: "$5000 ARS" },
+      { value: 10000, price: 10000, label: "$10000 ARS" }
+    ]
   },
   {
     id: "G016",
     name: "Google Play Gift Card",
     unit_price: 1500,
-    type: "fijo",
-    note: "Para comprar cualquier juego o app de Android - $1500 ARS",
+    type: "tiers",
+    note: "Para comprar cualquier juego o app de Android",
     category: "games",
     subcategory: "giftcard",
-    image: "https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg?auto=compress&cs=tinysrgb&w=400",
-    emoji: "📱"
+    image: "/src/img/games/google play.jpg",
+    emoji: "📱",
+    pricingTiers: [
+      { value: 1000, price: 1000, label: "$1000 ARS" },
+      { value: 1500, price: 1500, label: "$1500 ARS" },
+      { value: 2500, price: 2500, label: "$2500 ARS" },
+      { value: 5000, price: 5000, label: "$5000 ARS" }
+    ]
   },
   {
     id: "G017",
-    name: "PlayStation Plus - 1 Mes",
+    name: "PlayStation Plus",
     unit_price: 3500,
-    type: "fijo",
+    type: "subscription",
     note: "Para jugar online y acceso a juegos gratis",
     category: "games",
     subcategory: "subscription",
-    image: "https://images.pexels.com/photos/275033/pexels-photo-275033.jpeg?auto=compress&cs=tinysrgb&w=400",
-    emoji: "🎮"
+    image: "/src/img/games/ps plus.avif",
+    emoji: "🎮",
+    pricingTiers: [
+      { value: 1, price: 3500, label: "1 Mes" },
+      { value: 3, price: 9500, label: "3 Meses", discount: 9 },
+      { value: 6, price: 18000, label: "6 Meses", discount: 14 },
+      { value: 12, price: 32000, label: "12 Meses", discount: 24 }
+    ]
   },
   {
     id: "G018",
-    name: "Xbox Game Pass - 1 Mes",
+    name: "Xbox Game Pass",
     unit_price: 4000,
-    type: "fijo",
+    type: "subscription",
     note: "Para jugar cientos de juegos en consola y PC",
     category: "games",
     subcategory: "subscription",
-    image: "https://images.pexels.com/photos/3945313/pexels-photo-3945313.jpeg?auto=compress&cs=tinysrgb&w=400",
-    emoji: "🎮"
+    image: "/src/img/games/gamepass.avif",
+    emoji: "🎮",
+    pricingTiers: [
+      { value: 1, price: 4000, label: "1 Mes" },
+      { value: 3, price: 11000, label: "3 Meses", discount: 8 },
+      { value: 6, price: 20000, label: "6 Meses", discount: 17 },
+      { value: 12, price: 36000, label: "12 Meses", discount: 25 }
+    ]
   },
   {
     id: "G019",
-    name: "Nintendo Switch Online - 1 Mes",
+    name: "Nintendo Switch Online",
     unit_price: 2500,
-    type: "fijo",
+    type: "subscription",
     note: "Para jugar online y recibir juegos gratis",
     category: "games",
     subcategory: "subscription",
-    image: "https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg?auto=compress&cs=tinysrgb&w=400",
-    emoji: "🎮"
+    image: "/src/img/games/nintendo.avif",
+    emoji: "🎮",
+    pricingTiers: [
+      { value: 1, price: 2500, label: "1 Mes" },
+      { value: 3, price: 7000, label: "3 Meses", discount: 7 },
+      { value: 12, price: 24000, label: "12 Meses", discount: 20 }
+    ]
   },
   {
     id: "G020",
@@ -249,7 +300,7 @@ export const SERVICES: Service[] = [
     note: "Para Fortnite, Rocket League y otros juegos de Epic - $2000 ARS",
     category: "games",
     subcategory: "giftcard",
-    image: "https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/epic.png",
     emoji: "🎮"
   },
   {
@@ -260,7 +311,7 @@ export const SERVICES: Service[] = [
     note: "Para LoL, TFT, Valorant y otros juegos de Riot - $1800 ARS",
     category: "games",
     subcategory: "giftcard",
-    image: "https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/rp lol.png",
     emoji: "🏆"
   },
   {
@@ -271,7 +322,7 @@ export const SERVICES: Service[] = [
     note: "Para comprar juegos o apps en iPhone/iPad - $2500 ARS",
     category: "games",
     subcategory: "giftcard",
-    image: "https://images.pexels.com/photos/163064/play-stone-network-networked-interactive-163064.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/itunes.jpg",
     emoji: "📱"
   },
 
@@ -284,7 +335,7 @@ export const SERVICES: Service[] = [
     note: "Subir rango o nivel - Desde $15.000 hasta $50.000",
     category: "games",
     subcategory: "boosting",
-    image: "https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/boosting lol.webp",
     emoji: "📈"
   },
   {
@@ -295,7 +346,7 @@ export const SERVICES: Service[] = [
     note: "Subir nivel o completar pases - Desde $12.000 hasta $40.000",
     category: "games",
     subcategory: "boosting",
-    image: "https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/fortnite boosting.webp",
     emoji: "📈"
   },
   {
@@ -306,7 +357,7 @@ export const SERVICES: Service[] = [
     note: "Subir rango en Battle Royale o Multijugador - Desde $10.000",
     category: "games",
     subcategory: "boosting",
-    image: "https://images.pexels.com/photos/3945313/pexels-photo-3945313.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/cod mobile.jpg",
     emoji: "📈"
   },
   {
@@ -317,7 +368,7 @@ export const SERVICES: Service[] = [
     note: "Cuentas con skins exclusivos - Desde $25.000 hasta $100.000",
     category: "games",
     subcategory: "accounts",
-    image: "https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/valorant.jpg",
     emoji: "👤"
   },
   {
@@ -328,7 +379,7 @@ export const SERVICES: Service[] = [
     note: "Cuentas con personajes y skins - Desde $20.000 hasta $80.000",
     category: "games",
     subcategory: "accounts",
-    image: "https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/Diamantes-Free-Fire-Brasil.jpg",
     emoji: "👤"
   },
 
@@ -341,7 +392,7 @@ export const SERVICES: Service[] = [
     note: "Pase de batalla de la temporada actual",
     category: "games",
     subcategory: "battlepass",
-    image: "https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/Diamantes-Free-Fire-Brasil.jpg",
     emoji: "🎖️"
   },
   {
@@ -352,7 +403,7 @@ export const SERVICES: Service[] = [
     note: "Pase de batalla de la temporada actual",
     category: "games",
     subcategory: "battlepass",
-    image: "https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/fortnite.jpg",
     emoji: "🎖️"
   },
   {
@@ -363,7 +414,7 @@ export const SERVICES: Service[] = [
     note: "Pase de batalla de la temporada actual",
     category: "games",
     subcategory: "battlepass",
-    image: "https://images.pexels.com/photos/3945313/pexels-photo-3945313.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/cod mobile.jpg",
     emoji: "🎖️"
   },
   {
@@ -374,7 +425,7 @@ export const SERVICES: Service[] = [
     note: "Pase de batalla de la temporada actual",
     category: "games",
     subcategory: "battlepass",
-    image: "https://images.pexels.com/photos/194511/pexels-photo-194511.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/mobile legends.jpg",
     emoji: "🎖️"
   },
 
@@ -426,7 +477,7 @@ export const SERVICES: Service[] = [
     note: "Clases personalizadas para mejorar en League of Legends",
     category: "games",
     subcategory: "coaching",
-    image: "https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/rp lol.png",
     emoji: "🎓"
   },
   {
@@ -437,7 +488,7 @@ export const SERVICES: Service[] = [
     note: "Clases para mejorar en construcción y combate",
     category: "games",
     subcategory: "coaching",
-    image: "https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/fortnite.jpg",
     emoji: "🎓"
   },
   {
@@ -448,7 +499,7 @@ export const SERVICES: Service[] = [
     note: "Clases para mejorar puntería y estrategia",
     category: "games",
     subcategory: "coaching",
-    image: "https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=400",
+    image: "/src/img/games/valorant.jpg",
     emoji: "🎓"
   },
 

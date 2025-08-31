@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { X, User, Phone, Mail, MessageSquare, CreditCard } from 'lucide-react';
-import { Service, OrderData } from '../types';
+import { Service, OrderData, PricingTier } from '../types';
 import { COUNTRIES } from '../data/countries';
+import { calculateDynamicPrice } from '../utils/pricing';
 
 interface PurchaseModalProps {
   isOpen: boolean;
   onClose: () => void;
   service: Service | null;
   quantity?: number;
+  selectedTier?: PricingTier;
   selectedCountry: string;
   onCountryChange: (country: string) => void;
   onProceedToPayment: (orderData: OrderData) => void;
@@ -18,6 +20,7 @@ export const PurchaseModal: React.FC<PurchaseModalProps> = ({
   onClose,
   service,
   quantity,
+  selectedTier,
   selectedCountry,
   onCountryChange,
   onProceedToPayment
@@ -43,8 +46,11 @@ export const PurchaseModal: React.FC<PurchaseModalProps> = ({
   const isGameService = service.category === 'games';
 
   const calculateTotal = () => {
-    if (service.type === 'cantidad' && quantity) {
-      return service.unit_price * quantity;
+    if (service.type === 'tiers' || service.type === 'subscription') {
+      return selectedTier ? selectedTier.price : service.unit_price;
+    }
+    if (service.type === 'cantidad' && (formData.quantity || quantity)) {
+      return calculateDynamicPrice(service, formData.quantity || quantity || 1);
     }
     return service.unit_price;
   };
@@ -111,21 +117,21 @@ export const PurchaseModal: React.FC<PurchaseModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="card-gradient rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto animate-in zoom-in duration-300 border border-white/10 shadow-2xl">
+    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-2 sm:p-4">
+      <div className="card-gradient rounded-2xl max-w-lg w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto animate-in zoom-in duration-300 border border-white/10 shadow-2xl">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-white/10 bg-gradient-to-r from-orange-500/10 to-transparent">
-          <h2 className="text-2xl font-bold text-white">🛒 Completar Compra</h2>
+        <div className="flex items-center justify-between p-4 sm:p-6 border-b border-white/10 bg-gradient-to-r from-orange-500/10 to-transparent">
+          <h2 className="text-lg sm:text-2xl font-bold text-white">🛒 Completar Compra</h2>
           <button
             onClick={onClose}
             className="text-gray-400 hover:text-white transition-all duration-300 hover:bg-white/10 p-2 rounded-xl"
           >
-            <X className="w-6 h-6" />
+            <X className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </div>
 
         {/* Service Summary */}
-        <div className="p-6 bg-gradient-to-r from-orange-500/5 to-transparent border-b border-white/10">
+        <div className="p-4 sm:p-6 bg-gradient-to-r from-orange-500/5 to-transparent border-b border-white/10">
           {service.image && (
             <div className="relative mb-6 overflow-hidden rounded-xl">
               <img 
@@ -183,7 +189,12 @@ export const PurchaseModal: React.FC<PurchaseModalProps> = ({
           
           <div className="flex justify-between items-center p-4 glass-effect rounded-xl">
             <span className="text-gray-200 font-medium">
-              {formData.quantity || quantity ? `${(formData.quantity || quantity).toLocaleString()} unidades` : 'Servicio completo'}
+              {service.type === 'cantidad' && (formData.quantity || quantity) 
+                ? `${(formData.quantity || quantity)!.toLocaleString()} unidades`
+                : service.type === 'tiers' || service.type === 'subscription'
+                  ? selectedTier ? selectedTier.label : 'Selección'
+                  : 'Servicio completo'
+              }
             </span>
             <span className="text-3xl font-bold bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
               {formatPrice(calculateTotal())}
@@ -192,7 +203,7 @@ export const PurchaseModal: React.FC<PurchaseModalProps> = ({
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-4">
+        <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-4">
           {/* Country Selector */}
           <div>
             <label className="block text-sm font-semibold text-gray-200 mb-3">
@@ -215,7 +226,7 @@ export const PurchaseModal: React.FC<PurchaseModalProps> = ({
           </div>
 
           {/* Name Fields */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-semibold text-gray-200 mb-3">
                 <User className="w-4 h-4 inline mr-1" />

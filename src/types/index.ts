@@ -1,8 +1,15 @@
+export interface PricingTier {
+  value: number;
+  price: number;
+  label: string;
+  discount?: number;
+}
+
 export interface Service {
   id: string;
   name: string;
   unit_price: number;
-  type: 'cantidad' | 'fijo' | 'rango';
+  type: 'cantidad' | 'fijo' | 'rango' | 'tiers' | 'subscription';
   note: string;
   category: 'games' | 'social';
   subcategory: 'currency' | 'giftcard' | 'subscription' | 'boosting' | 'accounts' | 'battlepass' | 'streaming' | 'coaching' | 'followers' | 'verification' | 'recovery' | 'protection';
@@ -10,6 +17,8 @@ export interface Service {
   maxQuantity?: number;
   minQuantity?: number;
   emoji: string;
+  pricingTiers?: PricingTier[];
+  quantityBreaks?: { quantity: number; pricePerUnit: number; discount?: number }[];
 }
 
 export interface Country {

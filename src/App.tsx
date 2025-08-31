@@ -8,7 +8,7 @@ import { UserAuth } from './components/UserAuth';
 import { OrdersList } from './components/OrdersList';
 import { Footer } from './components/Footer';
 import { WhatsAppFloat } from './components/WhatsAppFloat';
-import { Service, OrderData, User } from './types';
+import { Service, OrderData, User, PricingTier } from './types';
 import { storageUtils } from './utils/storage';
 
 type AppView = 'home' | 'dashboard';
@@ -26,6 +26,7 @@ function App() {
   // Purchase flow state
   const [selectedService, setSelectedService] = useState<Service | null>(null);
   const [selectedQuantity, setSelectedQuantity] = useState<number | undefined>(undefined);
+  const [selectedTier, setSelectedTier] = useState<PricingTier | undefined>(undefined);
   const [orderData, setOrderData] = useState<OrderData | null>(null);
 
   useEffect(() => {
@@ -37,9 +38,20 @@ function App() {
     setCurrentUser(user);
   }, []);
 
-  const handleServiceSelect = (service: Service, quantity?: number) => {
+  const handleServiceSelect = (service: Service, quantityOrTierValue?: number) => {
     setSelectedService(service);
-    setSelectedQuantity(quantity);
+    
+    if (service.type === 'tiers' || service.type === 'subscription') {
+      // For tier-based services, find the tier by value
+      const tier = service.pricingTiers?.find(t => t.value === quantityOrTierValue);
+      setSelectedTier(tier);
+      setSelectedQuantity(undefined);
+    } else {
+      // For quantity-based services
+      setSelectedQuantity(quantityOrTierValue);
+      setSelectedTier(undefined);
+    }
+    
     setIsPurchaseModalOpen(true);
   };
 
@@ -53,6 +65,7 @@ function App() {
     setIsPaymentCardOpen(false);
     setSelectedService(null);
     setSelectedQuantity(undefined);
+    setSelectedTier(undefined);
     setOrderData(null);
     // Refresh user to show updated orders
     const user = storageUtils.getCurrentUser();
@@ -111,6 +124,7 @@ function App() {
         onClose={() => setIsPurchaseModalOpen(false)}
         service={selectedService}
         quantity={selectedQuantity}
+        selectedTier={selectedTier}
         selectedCountry={selectedCountry}
         onCountryChange={setSelectedCountry}
         onProceedToPayment={handleProceedToPayment}

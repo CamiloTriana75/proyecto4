@@ -96,22 +96,22 @@ export const ServiceGrid: React.FC<ServiceGridProps> = ({ onServiceSelect }) => 
         </div>
 
         {/* Category Filter */}
-        <div className="flex justify-center mb-8 relative z-10">
-          <div className="glass-effect rounded-2xl p-2 border border-white/10 backdrop-blur-md">
-            <div className="flex space-x-2">
+        <div className="flex justify-center mb-8 relative z-10 px-4">
+          <div className="glass-effect rounded-2xl p-2 border border-white/10 backdrop-blur-md w-full max-w-lg">
+            <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
               <button
                 onClick={() => {
                   setActiveCategory('all');
                   setActiveSubcategory('all');
                 }}
-                className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+                className={`flex items-center justify-center space-x-2 px-4 sm:px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                   activeCategory === 'all'
                     ? 'bg-gradient-to-r from-orange-500 to-orange-600 text-white shadow-lg glow-orange'
                     : 'text-gray-300 hover:text-white hover:bg-white/10'
                 }`}
               >
                 <Filter className="w-4 h-4" />
-                <span>Todos</span>
+                <span className="text-sm sm:text-base">Todos</span>
                 <span className="bg-white/20 px-2 py-1 rounded-full text-xs font-bold">{SERVICES.length}</span>
               </button>
               <button
@@ -119,14 +119,14 @@ export const ServiceGrid: React.FC<ServiceGridProps> = ({ onServiceSelect }) => 
                   setActiveCategory('games');
                   setActiveSubcategory('all');
                 }}
-                className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+                className={`flex items-center justify-center space-x-2 px-4 sm:px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                   activeCategory === 'games'
                     ? 'bg-gradient-to-r from-purple-500 to-purple-600 text-white shadow-lg glow-purple'
                     : 'text-gray-300 hover:text-white hover:bg-white/10'
                 }`}
               >
                 <Gamepad2 className="w-4 h-4" />
-                <span>🎮 Juegos</span>
+                <span className="text-sm sm:text-base">🎮 Juegos</span>
                 <span className="bg-white/20 px-2 py-1 rounded-full text-xs font-bold">{gameServices.length}</span>
               </button>
               <button
@@ -134,14 +134,14 @@ export const ServiceGrid: React.FC<ServiceGridProps> = ({ onServiceSelect }) => 
                   setActiveCategory('social');
                   setActiveSubcategory('all');
                 }}
-                className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
+                className={`flex items-center justify-center space-x-2 px-4 sm:px-6 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 ${
                   activeCategory === 'social'
                     ? 'bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg glow-blue'
                     : 'text-gray-300 hover:text-white hover:bg-white/10'
                 }`}
               >
                 <Users className="w-4 h-4" />
-                <span>📱 Social</span>
+                <span className="text-sm sm:text-base">📱 Social</span>
                 <span className="bg-white/20 px-2 py-1 rounded-full text-xs font-bold">{socialServices.length}</span>
               </button>
             </div>
@@ -195,7 +195,7 @@ export const ServiceGrid: React.FC<ServiceGridProps> = ({ onServiceSelect }) => 
         )}
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 relative z-10 px-2 sm:px-0">
           {filteredServices.map((service, index) => (
             <div
               key={service.id}
