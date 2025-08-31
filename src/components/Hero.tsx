@@ -21,8 +21,8 @@ export const Hero: React.FC = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed max-w-3xl mx-auto">
-            Servicios profesionales para hacer crecer tus redes sociales de forma <span className="text-orange-400 font-semibold">segura y efectiva</span>. 
-            Verificaciones oficiales, seguidores reales, recuperación de cuentas y protección avanzada.
+            <span className="text-purple-400 font-bold">Recargas gaming</span>, <span className="text-blue-400 font-bold">gift cards</span>, <span className="text-green-400 font-bold">suscripciones</span> y <span className="text-orange-400 font-bold">servicios sociales</span> de forma segura y profesional. 
+            ¡Todo lo que necesitas para potenciar tu experiencia digital!
           </p>
           
           {/* Trust Badges */}

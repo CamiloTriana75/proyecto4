@@ -5,9 +5,11 @@ export interface Service {
   type: 'cantidad' | 'fijo' | 'rango';
   note: string;
   category: 'games' | 'social';
+  subcategory: 'currency' | 'giftcard' | 'subscription' | 'boosting' | 'accounts' | 'battlepass' | 'streaming' | 'coaching' | 'followers' | 'verification' | 'recovery' | 'protection';
   image?: string;
   maxQuantity?: number;
   minQuantity?: number;
+  emoji: string;
 }
 
 export interface Country {
