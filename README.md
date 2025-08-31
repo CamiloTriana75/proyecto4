@@ -1,4 +1,4 @@
-# SocialBoost - Plataforma de Servicios de Redes Sociales
+# Viral Recargas - Plataforma de Servicios de Redes Sociales
 
 Una aplicación React moderna para ofrecer servicios de crecimiento y verificación de redes sociales, similar a Codashop pero para servicios digitales.
 
@@ -6,7 +6,7 @@ Una aplicación React moderna para ofrecer servicios de crecimiento y verificaci
 
 - **Interfaz moderna**: Diseño responsive con Tailwind CSS y animaciones suaves
 - **Múltiples servicios**: Verificaciones, seguidores, recuperación de cuentas y más
-- **Flujo de pago diferenciado**: CBU para Argentina, WhatsApp para otros países
+- **Flujo de pago**: Transferencias AR y USD visibles, y WhatsApp para confirmación
 - **Autenticación simple**: Sistema de usuarios con localStorage
 - **Dashboard de usuario**: Historial de pedidos con estados en tiempo real
 - **Integración WhatsApp**: Para comprobantes y soporte
@@ -50,7 +50,7 @@ export const APP_CONFIG = {
   cbu_number: '0000003100010000000001',
   
   // Nombre de tu negocio
-  business_name: 'SocialBoost',
+  business_name: 'Viral Recargas',
   
   // Mensaje para países internacionales
   international_message: 'Hola, necesito información sobre métodos de pago para el servicio: {SERVICE} desde {COUNTRY}',
@@ -175,7 +175,7 @@ El proyecto está listo para producción. Usa `npm run build` para generar los a
 Para cambiar comportamientos específicos:
 
 1. **Validaciones de país**: Modifica `src/components/PurchaseModal.tsx`
-2. **Mensajes de WhatsApp**: Edita `src/utils/whatsapp.ts`
+2. **Mensajes de WhatsApp**: Edita `src/utils/whatsapp.ts` (plantillas con "Viral Recargas")
 3. **Datos de demo**: Modifica `src/utils/storage.ts`
 4. **Estilos**: Personaliza en cada componente o en `src/index.css`
 

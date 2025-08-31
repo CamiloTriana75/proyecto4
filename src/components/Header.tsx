@@ -34,9 +34,9 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Logo */}
         <div className="flex items-center space-x-2">
           <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-700 rounded-xl flex items-center justify-center shadow-lg glow-orange">
-            <span className="text-white font-bold text-lg">SB</span>
+            <span className="text-white font-bold text-lg">VR</span>
           </div>
-          <span className="text-white font-bold text-xl bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">SocialBoost</span>
+          <span className="text-white font-bold text-xl bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Viral Recargas</span>
         </div>
 
         {/* Desktop Navigation */}

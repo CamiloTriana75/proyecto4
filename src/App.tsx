@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { ServiceGrid } from './components/ServiceGrid';
@@ -130,11 +130,11 @@ function App() {
         onProceedToPayment={handleProceedToPayment}
       />
 
-      {orderData && selectedService && (
+      {isPaymentCardOpen && orderData && selectedService && (
         <PaymentCard
           service={selectedService}
           orderData={orderData}
-          quantity={selectedQuantity}
+          quantity={orderData.quantity}
           onBack={() => {
             setIsPaymentCardOpen(false);
             setIsPurchaseModalOpen(true);

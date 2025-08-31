@@ -9,77 +9,56 @@ export const generateWhatsAppMessage = (
 ): string => {
   const quantityText = quantity ? ` (${quantity.toLocaleString()} unidades)` : '';
   const isGameService = service.category === 'games';
-  const serviceEmoji = service.emoji;
-  const referenceId = `#SB${Date.now().toString().slice(-6)}`;
-  
-  // Determinar el tipo de servicio para el mensaje
-  let serviceType = '';
-  let actionText = '';
-  
+  const referenceId = `#VR${Date.now().toString().slice(-6)}`;
+
+  // Tipo de servicio y acción (mantener dinámico pero con el formato solicitado)
+  let actionText = 'servicio';
+  let serviceType = 'SERVICIO';
   if (isGameService) {
     switch (service.subcategory) {
       case 'currency':
-        serviceType = 'RECARGA DE MONEDAS VIRTUALES';
         actionText = 'recarga';
+        serviceType = 'RECARGA DE MONEDAS VIRTUALES';
         break;
       case 'giftcard':
-        serviceType = 'GIFT CARD';
         actionText = 'gift card';
+        serviceType = 'GIFT CARD';
         break;
       case 'subscription':
-        serviceType = 'SUSCRIPCIÓN';
         actionText = 'suscripción';
-        break;
-      case 'boosting':
-        serviceType = 'SERVICIO DE BOOSTING';
-        actionText = 'boosting';
-        break;
-      case 'accounts':
-        serviceType = 'COMPRA DE CUENTA';
-        actionText = 'cuenta';
-        break;
-      case 'battlepass':
-        serviceType = 'PASE DE BATALLA';
-        actionText = 'pase de batalla';
-        break;
-      case 'streaming':
-        serviceType = 'SERVICIO DE STREAMING';
-        actionText = 'servicio';
-        break;
-      case 'coaching':
-        serviceType = 'COACHING GAMING';
-        actionText = 'coaching';
+        serviceType = 'SUSCRIPCIÓN';
         break;
       default:
-        serviceType = 'SERVICIO GAMING';
         actionText = 'servicio';
+        serviceType = 'SERVICIO GAMING';
     }
   } else {
-    serviceType = 'SERVICIO SOCIAL';
     actionText = 'servicio';
+    serviceType = 'SERVICIO SOCIAL';
   }
 
-  return `¡Hola! 👋 Espero que estén muy bien
+  // Mensaje con el layout pedido (sin markdown en exceso y con etiquetas fijas)
+  return `¡Hola! Espero que estén muy bien
 
-Soy *${orderData.firstName} ${orderData.lastName}* y acabo de realizar una transferencia bancaria para mi ${actionText} 💳
+Soy ${orderData.firstName} ${orderData.lastName} y acabo de realizar una transferencia bancaria para mi ${actionText}
 
-${serviceEmoji} *DETALLES DE MI ${serviceType}:*
-🛍️ Servicio: *${service.name}${quantityText}*
-💰 Monto transferido: *${amount.toLocaleString('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 })}*
-🆔 Referencia: *${referenceId}*
+DETALLES DE MI ${serviceType}:
+Servicio: ${service.name}${quantityText}
+Monto transferido: ${amount.toLocaleString('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0 })}
+Referencia: ${referenceId}
 
-👤 *MIS DATOS PERSONALES:*
-📱 WhatsApp: ${orderData.phone}
-🆔 Documento: ${orderData.dni}${orderData.userId ? `\n🎯 Usuario/ID: ${orderData.userId}` : ''}${orderData.email ? `\n📧 Email: ${orderData.email}` : ''}${orderData.comments ? `\n💬 Comentarios: ${orderData.comments}` : ''}
+MIS DATOS PERSONALES:
+WhatsApp: ${orderData.phone}
+Documento: ${orderData.dni}${orderData.userId ? `\nUsuario/ID: ${orderData.userId}` : ''}${orderData.email ? `\nEmail: ${orderData.email}` : ''}${orderData.comments ? `\nComentarios: ${orderData.comments}` : ''}
 
-📎 *COMPROBANTE DE TRANSFERENCIA ADJUNTO*
+COMPROBANTE DE TRANSFERENCIA ADJUNTO
 (Adjunto la captura de pantalla de mi transferencia bancaria)
 
-¿Podrían confirmarme cuando procesen mi ${actionText}? 🙏
+¿Podrían confirmarme cuando procesen mi ${actionText}?
 
-¡Muchas gracias por su excelente servicio! ✨
+¡Muchas gracias por su excelente servicio!
 
-_Enviado desde SocialBoost Platform_ 🚀`;
+Enviado desde Viral Recargas`;
 };
 
 export const generateInternationalMessage = (
@@ -140,7 +119,7 @@ Quedo atento a su respuesta 😊
 
 ¡Saludos cordiales desde ${country}! 🙏
 
-_Consulta desde SocialBoost Platform_ 🚀`;
+_Consulta desde Viral Recargas_ 🚀`;
 };
 
 export const openWhatsApp = (message: string) => {

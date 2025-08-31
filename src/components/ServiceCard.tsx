@@ -89,6 +89,7 @@ const getGlowColor = (subcategory: string, isGameService: boolean) => {
 
 export const ServiceCard: React.FC<ServiceCardProps> = ({ service, onSelect }) => {
   const [quantity, setQuantity] = useState(service.minQuantity || 100);
+  const [quantityInput, setQuantityInput] = useState<string>(String(service.minQuantity || 100));
   const [selectedTier, setSelectedTier] = useState<PricingTier | null>(
     service.pricingTiers ? service.pricingTiers[0] : null
   );
@@ -131,6 +132,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service, onSelect }) =
 
   const handleQuantityChange = (value: number) => {
     setQuantity(value);
+    setQuantityInput(String(value));
     validateQuantity(value);
   };
 
@@ -145,15 +147,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service, onSelect }) =
     }
   };
 
-  const getStepSize = () => {
-    if (service.subcategory === 'currency') {
-      // Para monedas virtuales, pasos más pequeños
-      if (service.id === 'G002') return 10; // Free Fire diamantes
-      if (service.id === 'G001') return 50; // Robux
-      return 25;
-    }
-    return 100; // Para otros servicios
-  };
+  
 
   return (
     <div className="group relative overflow-hidden">
@@ -214,17 +208,32 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service, onSelect }) =
                     </span>
                     <div className="text-right">
                       <input
-                        type="number"
-                        value={quantity}
-                        onChange={(e) => handleQuantityChange(Math.max(1, parseInt(e.target.value) || 1))}
+                        type="text"
+                        inputMode="numeric"
+                        value={quantityInput}
+                        onChange={(e) => {
+                          const v = e.target.value;
+                          // allow empty while typing, and only digits
+                          if (v === '' || /^\d+$/.test(v)) {
+                            setQuantityInput(v);
+                          }
+                        }}
+                        onBlur={() => {
+                          const v = quantityInput.trim();
+                          const parsed = v === '' ? NaN : parseInt(v, 10);
+                          const minQ = service.minQuantity || 1;
+                          const maxQ = service.maxQuantity;
+                          let next = isNaN(parsed) ? minQ : parsed;
+                          if (next < minQ) next = minQ;
+                          if (maxQ && next > maxQ) next = maxQ;
+                          handleQuantityChange(next);
+                        }}
                         className={`w-28 px-3 py-2 glass-effect border rounded-lg text-white text-center focus:outline-none focus:ring-2 font-bold transition-all duration-300 text-sm ${
                           quantityError 
                             ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' 
                             : 'border-white/20 focus:border-orange-500 focus:ring-orange-500/20'
                         }`}
-                        min={service.minQuantity || 1}
-                        max={service.maxQuantity}
-                        step={getStepSize()}
+                        placeholder={String(service.minQuantity || 1)}
                       />
                     </div>
                   </div>
