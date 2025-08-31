@@ -10,7 +10,7 @@ export const SERVICES: Service[] = [
     note: "Moneda oficial para comprar skins, accesorios y más",
     category: "games",
     subcategory: "currency",
-    image: "/src/img/games/robux.webp",
+    image: "/img/games/robux.webp",
     maxQuantity: 50000,
     minQuantity: 100,
     emoji: "🎮",
@@ -30,7 +30,7 @@ export const SERVICES: Service[] = [
     note: "Para skins, personajes y eventos especiales",
     category: "games",
     subcategory: "currency",
-    image: "/src/img/games/Diamantes-Free-Fire-Brasil.jpg",
+    image: "/img/games/Diamantes-Free-Fire-Brasil.jpg",
     maxQuantity: 10000,
     minQuantity: 50,
     emoji: "💎",
@@ -50,7 +50,7 @@ export const SERVICES: Service[] = [
     note: "Para skins, emotes y pase de batalla",
     category: "games",
     subcategory: "currency",
-    image: "/src/img/games/fortnite.jpg",
+    image: "/img/games/fortnite.jpg",
     maxQuantity: 25000,
     minQuantity: 100,
     emoji: "🏆",
@@ -70,7 +70,7 @@ export const SERVICES: Service[] = [
     note: "Para skins, armas y pases de temporada",
     category: "games",
     subcategory: "currency",
-    image: "/src/img/games/pubg.webp",
+    image: "/img/games/pubg.webp",
     maxQuantity: 15000,
     minQuantity: 60,
     emoji: "🔫"
@@ -83,7 +83,7 @@ export const SERVICES: Service[] = [
     note: "Para héroes, skins y cofres",
     category: "games",
     subcategory: "currency",
-    image: "/src/img/games/mobile legends.jpg",
+    image: "/img/games/mobile legends.jpg",
     maxQuantity: 12000,
     minQuantity: 50,
     emoji: "⚔️"
@@ -96,7 +96,7 @@ export const SERVICES: Service[] = [
     note: "Para acelerar construcciones y comprar recursos",
     category: "games",
     subcategory: "currency",
-    image: "/src/img/games/clash-of-clans-gemas.webp",
+    image: "/img/games/clash-of-clans-gemas.webp",
     maxQuantity: 5000,
     minQuantity: 50,
     emoji: "💰"
@@ -109,7 +109,7 @@ export const SERVICES: Service[] = [
     note: "Para acelerar cofres, comprar cartas o skins",
     category: "games",
     subcategory: "currency",
-    image: "/src/img/games/clash royale.webp",
+    image: "/img/games/clash royale.webp",
     maxQuantity: 8000,
     minQuantity: 50,
     emoji: "👑"
@@ -122,7 +122,7 @@ export const SERVICES: Service[] = [
     note: "Para invocaciones y eventos",
     category: "games",
     subcategory: "currency",
-    image: "/src/img/games/genshin.webp",
+    image: "/img/games/genshin.webp",
     maxQuantity: 8000,
     minQuantity: 60,
     emoji: "🌟"
@@ -135,7 +135,7 @@ export const SERVICES: Service[] = [
     note: "Para armas, skins y pases de batalla",
     category: "games",
     subcategory: "currency",
-    image: "/src/img/games/cod mobile.jpg",
+    image: "/img/games/cod mobile.jpg",
     maxQuantity: 10000,
     minQuantity: 100,
     emoji: "🎯"
@@ -148,7 +148,7 @@ export const SERVICES: Service[] = [
     note: "Para mejorar jugadores, equipos y habilidades",
     category: "games",
     subcategory: "currency",
-    image: "/src/img/games/dls.jpg",
+    image: "/img/games/dls.jpg",
     maxQuantity: 20000,
     minQuantity: 100,
     emoji: "⚽"
@@ -161,7 +161,7 @@ export const SERVICES: Service[] = [
     note: "Para comprar skins de armas y pases de batalla",
     category: "games",
     subcategory: "currency",
-    image: "/src/img/games/valorant.jpg",
+    image: "/img/games/valorant.jpg",
     maxQuantity: 15000,
     minQuantity: 100,
     emoji: "🎯"
@@ -174,7 +174,7 @@ export const SERVICES: Service[] = [
     note: "Para skins, campeones y pases de evento",
     category: "games",
     subcategory: "currency",
-    image: "/src/img/games/rp lol.png",
+    image: "/img/games/rp lol.png",
     maxQuantity: 20000,
     minQuantity: 100,
     emoji: "🏆"
@@ -187,7 +187,7 @@ export const SERVICES: Service[] = [
     note: "Para comprar skins y packs dentro del juego",
     category: "games",
     subcategory: "currency",
-    image: "/src/img/games/minecraft.jpg",
+    image: "/img/games/minecraft.jpg",
     maxQuantity: 10000,
     minQuantity: 100,
     emoji: "⛏️"
@@ -200,7 +200,7 @@ export const SERVICES: Service[] = [
     note: "Para sobres, jugadores y modos de juego",
     category: "games",
     subcategory: "currency",
-    image: "/src/img/games/fifa.jpg",
+    image: "/img/games/fifa.jpg",
     maxQuantity: 12000,
     minQuantity: 100,
     emoji: "⚽"
@@ -215,7 +215,7 @@ export const SERVICES: Service[] = [
     note: "Créditos para juegos y contenido en Steam",
     category: "games",
     subcategory: "giftcard",
-    image: "/src/img/games/steam.png",
+    image: "/img/games/steam.png",
     emoji: "🎮",
     pricingTiers: [
       { value: 500, price: 500, label: "$500 ARS" },
@@ -233,7 +233,7 @@ export const SERVICES: Service[] = [
     note: "Para comprar cualquier juego o app de Android",
     category: "games",
     subcategory: "giftcard",
-    image: "/src/img/games/google play.jpg",
+    image: "/img/games/google play.jpg",
     emoji: "📱",
     pricingTiers: [
       { value: 1000, price: 1000, label: "$1000 ARS" },
@@ -250,7 +250,7 @@ export const SERVICES: Service[] = [
     note: "Para jugar online y acceso a juegos gratis",
     category: "games",
     subcategory: "subscription",
-    image: "/src/img/games/ps plus.avif",
+    image: "/img/games/ps plus.avif",
     emoji: "🎮",
     pricingTiers: [
       { value: 1, price: 3500, label: "1 Mes" },
@@ -267,7 +267,7 @@ export const SERVICES: Service[] = [
     note: "Para jugar cientos de juegos en consola y PC",
     category: "games",
     subcategory: "subscription",
-    image: "/src/img/games/gamepass.avif",
+    image: "/img/games/gamepass.avif",
     emoji: "🎮",
     pricingTiers: [
       { value: 1, price: 4000, label: "1 Mes" },
@@ -284,7 +284,7 @@ export const SERVICES: Service[] = [
     note: "Para jugar online y recibir juegos gratis",
     category: "games",
     subcategory: "subscription",
-    image: "/src/img/games/nintendo.avif",
+    image: "/img/games/nintendo.avif",
     emoji: "🎮",
     pricingTiers: [
       { value: 1, price: 2500, label: "1 Mes" },
@@ -300,7 +300,7 @@ export const SERVICES: Service[] = [
     note: "Para Fortnite, Rocket League y otros juegos de Epic - $2000 ARS",
     category: "games",
     subcategory: "giftcard",
-    image: "/src/img/games/epic.png",
+    image: "/img/games/epic.png",
     emoji: "🎮"
   },
   {
@@ -311,7 +311,7 @@ export const SERVICES: Service[] = [
     note: "Para LoL, TFT, Valorant y otros juegos de Riot - $1800 ARS",
     category: "games",
     subcategory: "giftcard",
-    image: "/src/img/games/rp lol.png",
+    image: "/img/games/rp lol.png",
     emoji: "🏆"
   },
   {
@@ -322,7 +322,7 @@ export const SERVICES: Service[] = [
     note: "Para comprar juegos o apps en iPhone/iPad - $2500 ARS",
     category: "games",
     subcategory: "giftcard",
-    image: "/src/img/games/itunes.jpg",
+    image: "/img/games/itunes.jpg",
     emoji: "📱"
   },
 
@@ -335,7 +335,7 @@ export const SERVICES: Service[] = [
     note: "Subir rango o nivel - Desde $15.000 hasta $50.000",
     category: "games",
     subcategory: "boosting",
-    image: "/src/img/games/boosting lol.webp",
+    image: "/img/games/boosting lol.webp",
     emoji: "📈"
   },
   {
@@ -346,7 +346,7 @@ export const SERVICES: Service[] = [
     note: "Subir nivel o completar pases - Desde $12.000 hasta $40.000",
     category: "games",
     subcategory: "boosting",
-    image: "/src/img/games/fortnite boosting.webp",
+    image: "/img/games/fortnite boosting.webp",
     emoji: "📈"
   },
   {
@@ -357,7 +357,7 @@ export const SERVICES: Service[] = [
     note: "Subir rango en Battle Royale o Multijugador - Desde $10.000",
     category: "games",
     subcategory: "boosting",
-    image: "/src/img/games/cod mobile.jpg",
+    image: "/img/games/cod mobile.jpg",
     emoji: "📈"
   },
   {
@@ -368,7 +368,7 @@ export const SERVICES: Service[] = [
     note: "Cuentas con skins exclusivos - Desde $25.000 hasta $100.000",
     category: "games",
     subcategory: "accounts",
-    image: "/src/img/games/valorant.jpg",
+    image: "/img/games/valorant.jpg",
     emoji: "👤"
   },
   {
@@ -379,7 +379,7 @@ export const SERVICES: Service[] = [
     note: "Cuentas con personajes y skins - Desde $20.000 hasta $80.000",
     category: "games",
     subcategory: "accounts",
-    image: "/src/img/games/Diamantes-Free-Fire-Brasil.jpg",
+    image: "/img/games/Diamantes-Free-Fire-Brasil.jpg",
     emoji: "👤"
   },
 
@@ -392,7 +392,7 @@ export const SERVICES: Service[] = [
     note: "Pase de batalla de la temporada actual",
     category: "games",
     subcategory: "battlepass",
-    image: "/src/img/games/Diamantes-Free-Fire-Brasil.jpg",
+    image: "/img/games/Diamantes-Free-Fire-Brasil.jpg",
     emoji: "🎖️"
   },
   {
@@ -403,7 +403,7 @@ export const SERVICES: Service[] = [
     note: "Pase de batalla de la temporada actual",
     category: "games",
     subcategory: "battlepass",
-    image: "/src/img/games/fortnite.jpg",
+    image: "/img/games/fortnite.jpg",
     emoji: "🎖️"
   },
   {
@@ -414,7 +414,7 @@ export const SERVICES: Service[] = [
     note: "Pase de batalla de la temporada actual",
     category: "games",
     subcategory: "battlepass",
-    image: "/src/img/games/cod mobile.jpg",
+    image: "/img/games/cod mobile.jpg",
     emoji: "🎖️"
   },
   {
@@ -425,7 +425,7 @@ export const SERVICES: Service[] = [
     note: "Pase de batalla de la temporada actual",
     category: "games",
     subcategory: "battlepass",
-    image: "/src/img/games/mobile legends.jpg",
+    image: "/img/games/mobile legends.jpg",
     emoji: "🎖️"
   },
 
@@ -477,7 +477,7 @@ export const SERVICES: Service[] = [
     note: "Clases personalizadas para mejorar en League of Legends",
     category: "games",
     subcategory: "coaching",
-    image: "/src/img/games/rp lol.png",
+    image: "/img/games/rp lol.png",
     emoji: "🎓"
   },
   {
@@ -488,7 +488,7 @@ export const SERVICES: Service[] = [
     note: "Clases para mejorar en construcción y combate",
     category: "games",
     subcategory: "coaching",
-    image: "/src/img/games/fortnite.jpg",
+    image: "/img/games/fortnite.jpg",
     emoji: "🎓"
   },
   {
@@ -499,7 +499,7 @@ export const SERVICES: Service[] = [
     note: "Clases para mejorar puntería y estrategia",
     category: "games",
     subcategory: "coaching",
-    image: "/src/img/games/valorant.jpg",
+    image: "/img/games/valorant.jpg",
     emoji: "🎓"
   },
 
