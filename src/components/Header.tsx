@@ -33,9 +33,11 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center space-x-2">
-          <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-700 rounded-xl flex items-center justify-center shadow-lg glow-orange">
-            <span className="text-white font-bold text-lg">VR</span>
-          </div>
+          <img
+            src="/logo.png"
+            alt="Viral Recargas"
+            className="w-10 h-10 rounded-xl object-contain shadow-lg glow-orange bg-white/5"
+          />
           <span className="text-white font-bold text-xl bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Viral Recargas</span>
         </div>
 

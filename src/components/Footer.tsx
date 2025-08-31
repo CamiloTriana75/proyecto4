@@ -45,11 +45,11 @@ export const Footer: React.FC = () => {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center space-x-2 text-gray-300 font-medium">
                 <MessageCircle className="w-4 h-4" />
-                <span>WhatsApp 24/7</span>
+                <a href={`https://wa.me/${APP_CONFIG.merchant_phone}`} target="_blank" rel="noopener noreferrer" className="hover:text-orange-400 underline">WhatsApp: +54 9 11 3065 2655</a>
               </li>
               <li className="flex items-center space-x-2 text-gray-300 font-medium">
                 <Mail className="w-4 h-4" />
-                <span>Email Support</span>
+                <a href={`mailto:${APP_CONFIG.support_email || APP_CONFIG.ar_contact_email}`} className="hover:text-orange-400 underline">{APP_CONFIG.support_email || APP_CONFIG.ar_contact_email}</a>
               </li>
               <li className="flex items-center space-x-2 text-gray-300 font-medium">
                 <Shield className="w-4 h-4" />
@@ -62,14 +62,14 @@ export const Footer: React.FC = () => {
           <div>
             <h3 className="text-white font-bold mb-6 text-lg">⚖️ Legal</h3>
             <ul className="space-y-3 text-sm">
-              <li className="text-gray-300 hover:text-orange-400 transition-all duration-300 cursor-pointer font-medium">
-                Términos de Servicio
+              <li>
+                <a href="/terminos.html" className="text-gray-300 hover:text-orange-400 transition-all duration-300 font-medium">Términos de Servicio</a>
               </li>
-              <li className="text-gray-300 hover:text-orange-400 transition-all duration-300 cursor-pointer font-medium">
-                Política de Privacidad
+              <li>
+                <a href="/privacidad.html" className="text-gray-300 hover:text-orange-400 transition-all duration-300 font-medium">Política de Privacidad</a>
               </li>
-              <li className="text-gray-300 hover:text-orange-400 transition-all duration-300 cursor-pointer font-medium">
-                Política de Reembolsos
+              <li>
+                <a href="/reembolsos.html" className="text-gray-300 hover:text-orange-400 transition-all duration-300 font-medium">Política de Reembolsos</a>
               </li>
             </ul>
           </div>
@@ -78,7 +78,7 @@ export const Footer: React.FC = () => {
         {/* Bottom */}
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between">
           <p className="text-gray-300 text-sm font-medium">
-            © 2025 {APP_CONFIG.business_name}. Todos los derechos reservados.
+            &copy; 2025 {APP_CONFIG.business_name}. Todos los derechos reservados.
           </p>
           <div className="flex items-center space-x-4 mt-4 md:mt-0">
             <a

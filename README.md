@@ -182,3 +182,104 @@ Para cambiar comportamientos específicos:
 ## 📞 Soporte
 
 Para soporte técnico o consultas sobre la implementación, contacta a través de WhatsApp.
+
+## 🧭 Arquitectura en detalle
+
+- __`src/App.tsx`__: orquesta la UI principal y maneja apertura de `PurchaseModal` y paso a `PaymentCard`.
+- __`src/components/PurchaseModal.tsx`__: formulario de compra. Valida campos requeridos, calcula totales según `service.type` y, al enviar, cambia `step` a "payment" y simula el procesamiento antes de llamar a `onProceedToPayment`.
+- __`src/components/PaymentCard.tsx`__: pantalla "Finalizar Pago". Muestra instrucciones de transferencia para AR y USD, genera el mensaje/CTA de WhatsApp y marca la orden como registrada.
+- __`src/components/ServiceGrid.tsx`__ y __`ServiceCard.tsx`__: listan el catálogo y abren el modal con el servicio seleccionado.
+- __`src/utils/pricing.ts`__: lógica de precios dinámicos por cantidad/tiers.
+- __`src/utils/whatsapp.ts`__: helpers para construir enlaces con `APP_CONFIG.merchant_phone` y plantillas de mensajes.
+- __`src/utils/storage.ts`__: persistencia ligera con `localStorage` (usuarios y pedidos demo).
+- __`src/data/services.ts`__, __`countries.ts`__, __`config.ts`__: catálogo, países soportados y configuración del merchant.
+
+### Flujo de datos
+
+1. __Selección__: `ServiceCard` -> abre `PurchaseModal` con `service`, `selectedCountry` y cantidad/tier opcional.
+2. __Formulario__: `PurchaseModal` guarda datos en estado local (`formData`), valida en blur y al enviar. Calcula `total` con `calculateDynamicPrice()` cuando aplica.
+3. __Procesamiento__: `PurchaseModal` muestra pantalla de "Procesando" y llama `onProceedToPayment(orderData)`.
+4. __Pago__: `PaymentCard` renderiza datos bancarios para AR/USD y el CTA a WhatsApp. Al confirmar, se guarda la orden (vía `storage.ts`).
+
+### Decisiones clave
+
+- __Sin backend__: todo es client-side con `localStorage` para facilitar pruebas y despliegue estático.
+- __Países__: selector de país ajusta prefijo telefónico y método de pago mostrado.
+- __Accesibilidad__: inputs con estados de error/éxito, focus styles, y validaciones mínimas.
+
+## 🧰 Scripts disponibles
+
+Desde `package.json`:
+
+```bash
+npm run dev       # Desarrollo con Vite
+npm run build     # Build de producción a dist/
+npm run preview   # Previsualizar el build localmente
+npm run lint      # Linting del código
+```
+
+## ⚙️ Configuración del proyecto
+
+- __Archivo__: `src/data/config.ts`
+- __Claves principales__:
+  - `merchant_phone`: número de WhatsApp (solo dígitos con código de país).
+  - `cbu_alias`, `cbu_number`, `ar_holder_name`, `ar_entity_name`: datos para AR.
+  - `usd_*`: datos para transferencias en USD.
+  - `business_name`: nombre que se muestra en la UI.
+  - `international_message`: plantilla para usuarios fuera de AR.
+
+## 🧪 Cómo probar
+
+1. `npm install` y `npm run dev`.
+2. Elegir un servicio en `ServiceGrid`, completar `PurchaseModal` y continuar.
+3. En "Finalizar Pago" revisa datos AR/USD y abre WhatsApp con el mensaje pre-armado.
+4. Verifica en el dashboard/historial (si aplica) que la orden se guarde como pendiente.
+
+## 🚀 Guías de despliegue
+
+El build es totalmente estático. Tras `npm run build` se genera `dist/`.
+
+### Netlify (recomendado)
+
+- __Método 1: Conectado a Git__
+  1. En Netlify, "Add new site" > "Import from Git" y selecciona este repo.
+  2. Build command: `npm run build`. Publish directory: `dist`.
+  3. Deploy. Netlify correrá `npm ci`, compilará y publicará.
+
+- __Método 2: Drag & drop__
+  1. `npm run build` local.
+  2. Sube la carpeta `dist/` al panel de Netlify (Drag & drop).
+
+### Vercel
+
+1. "New Project" > Importa el repo.
+2. Framework Preset: `Vite`.
+3. Build command: `npm run build`. Output: `dist`.
+4. Deploy.
+
+### GitHub Pages
+
+Opción simple sirviendo contenido estático de `dist/` con la acción oficial:
+
+1. `npm run build`.
+2. Usa una GitHub Action (ej. `actions/deploy-pages`) para publicar `dist/`.
+3. Si el sitio va a un subpath (p.ej. `usuario.github.io/proyecto`), en `vite.config.ts` define `base: '/proyecto/'`.
+
+### Cualquier hosting estático (Nginx/Apache/S3/Cloudflare)
+
+1. `npm run build`.
+2. Sube el contenido de `dist/` al bucket/servidor.
+
+## 🧩 Troubleshooting
+
+- __Enlaces de WhatsApp no abren__: valida `APP_CONFIG.merchant_phone` (solo dígitos, con código de país) y que el mensaje se encodee en `whatsapp.ts`.
+- __Precios por cantidad__: revisa límites `minQuantity`/`maxQuantity` del servicio en `services.ts` y la validación en `PurchaseModal`.
+- __Despliegue en subcarpeta__: configura `base` en `vite.config.ts`.
+- __Íconos no cargan__: `lucide-react` está excluido de optimizeDeps por compatibilidad (`vite.config.ts`).
+
+## ❓ FAQ
+
+- __¿Se requiere backend?__ No. El MVP funciona 100% estático con `localStorage`.
+- __¿Dónde cambio el branding?__ `src/data/config.ts` (`business_name`) y textos en componentes como `Header.tsx`/`Hero.tsx`.
+- __¿Cómo agrego un servicio nuevo?__ Edita `src/data/services.ts` (sigue la estructura existente).
+- __¿Puedo desactivar el email en UI?__ Sí, ya está oculto en `PaymentCard` y también no se muestra en `PurchaseModal` durante el procesamiento.

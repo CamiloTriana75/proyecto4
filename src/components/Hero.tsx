@@ -11,6 +11,12 @@ export const Hero: React.FC = () => {
       
       <div className="container mx-auto px-4">
         <div className="text-center max-w-5xl mx-auto relative z-10">
+          {/* Company Logo */}
+          <img
+            src="/logo.png"
+            alt="Viral Recargas"
+            className="w-20 h-20 sm:w-24 sm:h-24 object-contain mx-auto mb-6 rounded-2xl shadow-2xl bg-white/5"
+          />
           <div className="inline-block px-3 sm:px-4 py-2 bg-orange-500/20 border border-orange-500/30 rounded-full mb-6">
             <span className="text-orange-400 text-xs sm:text-sm font-semibold">✨ Plataforma #1 en Servicios Digitales</span>
           </div>
@@ -23,6 +29,8 @@ export const Hero: React.FC = () => {
           <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-8 sm:mb-12 leading-relaxed max-w-3xl mx-auto px-4">
             <span className="text-purple-400 font-bold">Recargas gaming</span>, <span className="text-blue-400 font-bold">gift cards</span>, <span className="text-green-400 font-bold">suscripciones</span> y <span className="text-orange-400 font-bold">servicios sociales</span> de forma segura y profesional. 
             ¡Todo lo que necesitas para potenciar tu experiencia digital!
+            <br className="hidden sm:block" />
+            <span className="text-gray-400 text-base sm:text-lg block mt-3">Precios en pesos argentinos. Para cotizar en dólares, contáctanos por WhatsApp <a href={`https://wa.me/${encodeURIComponent('5491130652655')}`} className="underline hover:text-orange-400">+54 9 11 3065 2655</a> o al correo <a href="mailto:viralinternationalus@gmail.com" className="underline hover:text-orange-400">viralinternationalus@gmail.com</a>.</span>
           </p>
           
           {/* Trust Badges */}

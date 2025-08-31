@@ -25,7 +25,7 @@ export const SERVICES: Service[] = [
   {
     id: "G002",
     name: "Diamantes - Free Fire",
-    unit_price: 9.5, // Base: 950 ARS por 100 diamantes
+    unit_price: 10, // Base solicitada: 50 = 500 ARS (10 por unidad)
     type: "cantidad",
     note: "Para skins, personajes y eventos especiales",
     category: "games",
@@ -35,11 +35,13 @@ export const SERVICES: Service[] = [
     minQuantity: 50,
     emoji: "💎",
     quantityBreaks: [
-      { quantity: 50, pricePerUnit: 9.5 },
-      { quantity: 200, pricePerUnit: 9.0, discount: 5 },
-      { quantity: 500, pricePerUnit: 8.5, discount: 11 },
-      { quantity: 1000, pricePerUnit: 8.0, discount: 16 },
-      { quantity: 5000, pricePerUnit: 7.5, discount: 21 }
+      // Precios proporcionales: 50=500, 100=1000, 200=2000, etc. (sin descuentos)
+      { quantity: 50, pricePerUnit: 10 },
+      { quantity: 100, pricePerUnit: 10 },
+      { quantity: 200, pricePerUnit: 10 },
+      { quantity: 500, pricePerUnit: 10 },
+      { quantity: 1000, pricePerUnit: 10 },
+      { quantity: 5000, pricePerUnit: 10 }
     ]
   },
   {
